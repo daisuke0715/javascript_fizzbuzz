@@ -1,6 +1,6 @@
 'use strict';
 
-const resultText = document.getElementById("result-text");
+const result = document.getElementById("result");
 
 // クリック時の挙動
 const on_click = () => {
@@ -20,15 +20,15 @@ const check_number = (value) => {
 const judge_fizzbuzz = () => {
     const fizznum = document.getElementById("fizznum").value;
     const buzznum = document.getElementById("buzznum").value;
-    resultText.innerHTML = "";
+    result.innerHTML = "";
     
     for(let counter = 1; counter < 100; counter++){
         if(counter % fizznum == 0 && counter % buzznum == 0){
-            resultText.innerHTML += "FizzBuzz" +  "  " + counter + "<br>";
+            result.innerHTML += "FizzBuzz" +  "  " + counter + "<br>";
         }else if(counter % fizznum == 0){
-            resultText.innerHTML += "Fizz" + "  " + counter + "<br>";
+            result.innerHTML += "Fizz" + "  " + counter + "<br>";
         }else if(counter % buzznum == 0){
-            resultText.innerHTML += "Buzz" + "  " + counter + "<br>";
+            result.innerHTML += "Buzz" + "  " + counter + "<br>";
         }
 
     };
@@ -37,5 +37,5 @@ const judge_fizzbuzz = () => {
 
 // エラーメッセージを表示する関数
 const output_error_message = () => {
-    resultText.innerHTML = "整数値を入力してください。"
+    result.innerHTML = "整数値を入力してください。"
 };

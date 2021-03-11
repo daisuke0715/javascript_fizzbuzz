@@ -1,38 +1,44 @@
 'use strict';
 
-const showFizzbuzzResult = document.getElementById('show-fizzbuzz-result');
-const executeFizzbuzzButton = document.getElementById('execute-fizzbuzz-button');
+const showResult = document.getElementById('show-result');
+const executeFizzbuzz = document.getElementById('fizzbuzz-button');
 
-console.log(executeFizzbuzzButton);
+console.log(executeFizzbuzz);
 
 // クリック時の挙動
-executeFizzbuzzButton.addEventListener('click', () => {
+// ここの fizzValue buzzValue に関しては、文字列型で処理しないとうまくいかない
+executeFizzbuzz.addEventListener('click', () => {
     const fizzValue = escapeHtml(document.getElementById('fizz-value').value);
     const buzzValue = escapeHtml(document.getElementById('buzz-value').value);
-    (judgeWhetherInteger(fizzValue)) && judgeWhetherInteger(escapeHtml(buzzValue)) ? judgeFizzbuzz() : outputErrorMessage();
+    console.log(fizzValue);
+    console.log(buzzValue);
+    (judgeWhetherInteger(fizzValue)) && judgeWhetherInteger(buzzValue) ? judgeFizzbuzz() : outputErrorMessage();
 });
 
 
 // 整数値か判定する関数
 const judgeWhetherInteger = (value) => {
-    var regex = new RegExp(/^[0-9]+$/);
+    const regex = new RegExp(/^[0-9]+$/);
     return regex.test(value);
 }
 
 
 // 入力値を元にFizzBuzzを判定する関数
+// こちらの fizzValue buzzValue に関しては、if文でcounterとともに計算処理をしているので、一度数値型に変換する必要がある。
 const judgeFizzbuzz = () => {
-    const fizzValue = escapeHtml(document.getElementById('fizz-value').value);
-    const buzzValue = escapeHtml(document.getElementById('buzz-value').value);
-    showFizzbuzzResult.innerHTML = '';
+    const fizzValueStr = escapeHtml(document.getElementById('fizz-value').value);
+    const buzzValueStr = escapeHtml(document.getElementById('buzz-value').value);
+    const fizzValueInt = Number.parseInt(fizzValueStr);
+    const buzzValueInt = Number.parseInt(buzzValueStr);
+    showResult.innerHTML = '';
     
-    for(let counter = 1; counter < 100; counter++) {
-        if(counter % fizzValue == 0 && counter % buzzValue == 0) {
-            showFizzbuzzResult.innerHTML += 'FizzBuzz' +  '  ' + counter + '<br>';
-        }else if(counter % fizzValue == 0) {
-            showFizzbuzzResult.innerHTML += 'Fizz' + '  ' + counter + '<br>';
-        }else if(counter % buzzValue == 0) {
-            showFizzbuzzResult.innerHTML += 'Buzz' + '  ' + counter + '<br>';
+    for (let counter = 1; counter < 100; counter++) {
+        if (counter % fizzValueInt == 0 && counter % buzzValueInt == 0) {
+            showResult.innerHTML += 'FizzBuzz' +  '  ' + counter + '<br>';
+        }else if (counter % fizzValueInt == 0) {
+            showResult.innerHTML += 'Fizz' + '  ' + counter + '<br>';
+        }else if (counter % buzzValueInt == 0) {
+            showResult.innerHTML += 'Buzz' + '  ' + counter + '<br>';
         };
 
     };
@@ -51,5 +57,5 @@ const escapeHtml = (str) => {
 
 // エラーメッセージを表示する関数
 const outputErrorMessage = () => {
-    showFizzbuzzResult.innerHTML = '整数値を入力してください。'
+    showResult.innerHTML = '整数値を入力してください。'
 };

@@ -5,25 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>MENTA第一回課題提出</title>
+    <title>MENTA第一回課題</title>
 </head>
 <body>
-    <h1>Fizzbuzz問題</h1>
-    <div> 
-        <label for="fizznum">FizzNum:</label>
-        <input class="form" id="fizznum" type="text" name="fizznum" placeholder="整数値を入力してください">
-    <div> 
-        <label for="buzznum">BuzzNum:</label>
-        <input class="form" id="buzznum" type="text" name="buzznum" placeholder="整数値を入力してください">
-    </div>
-    <div>
-        <input type="button" value="実行" onclick="on_click()">
-    </div>
+    <section>
+        <h1>Fizzbuzz問題</h1>
+        <div> 
+            <label for="fizz">FizzNum:</label>
+            <input class="form" id="fizz-value" type="text" name="fizz" placeholder="整数値を入力してください">
+        </div>
+        <div> 
+            <label for="buzz">BuzzNum:</label>
+            <input class="form" id="buzz-value" type="text" name="buzz" placeholder="整数値を入力してください">
+        </div>
+        <div>
+            <input type="button" value="実行" id="fizzbuzz-button">
+        </div>
 
-    <div>
-        <p>【出力】</p>
-        <p id="result-text"></p>
-    </div>
+        <div>
+            <p>【出力】</p>
+            <p id="show-result"></p>
+        </div>
+    </section>
 
     <script src="main.js"></script>
 </body>
